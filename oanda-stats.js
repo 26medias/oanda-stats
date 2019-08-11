@@ -42,12 +42,12 @@ cli = {
 				type:		'text',
 				name:		'refresh',
 				message:	'Refresh? (Y/n)',
-				initial:	'n',
+				initial:	'Y',
 				required:	true
 			}];
 			
 			cli.request(params, function(input) {
-				if (input.refresh.toLowerCase()=='y') {
+				if (input.refresh.toLowerCase()=='y' || !settings[settings.OANDA_ACC].refreshed) {
 					cli.refreshTransactions(settings, function(response) {
 						done();
 					});
